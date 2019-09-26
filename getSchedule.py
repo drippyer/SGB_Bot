@@ -15,19 +15,8 @@ simpleDay = str(today.strftime("%-m/%d"))
 dateFormat = "%Y-%m-%d %H:%M:%S %Z%z"
 timeFormat = "%-I:%M %p %Z"
 
-# create folder to manage schedule files
 cwd = os.getcwd()
 folderDir = cwd + "/games"
-#try:
-#    os.makedirs(folderDir)
-#except FileExistsError:
-    # directory already exists
-#    pass
-
-# clear file if it exists then make text file that will contain game info
-#filename = folderDir + "/schedule_" + longDay + ".txt"
-#open(filename, 'w').close()
-#f = open(filename, "a+")
 
 # create today's URL for API call
 baseURL = "https://statsapi.web.nhl.com/api/v1"
@@ -45,7 +34,7 @@ games = datesDict["games"]
 r = praw.Reddit('bot1')
 subreddit = r.subreddit("ShotGlassBets_Testing")
 
-# check each game to create a title and append to text file
+# check each game to create a title and post to reddit
 for game in games:
     rawGameDate = datetime.strptime(game["gameDate"], "%Y-%m-%dT%H:%M:%SZ")
     cleanGameDate = rawGameDate.replace(tzinfo=timezone('UTC'))
@@ -58,6 +47,3 @@ for game in games:
     # submit post to reddit
     subreddit.submit(title, selftext="", url=None, flair_id=None, flair_text=None, resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
     print("Posted " + title)
-    # wait 11 minutes to post next thread
-    #print("Wating 11 minutes before next post....")
-    #time.sleep(60*11)
