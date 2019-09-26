@@ -55,7 +55,7 @@ for game in games:
     homeTeam = teamDict["home"]["team"]["name"]
     title = "[" + simpleDay + "] " + homeTeam + " vs " + awayTeam + " (" + cleanTime + ")"
     # submit post to reddit
-    subreddit.submit(title, selftext="", url=None, flair_id=0cce61b8-e008-11e9-b8bd-0e747d468076, flair_text="NHL", resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
+    subreddit.submit(title, selftext="", url=None, flair_id="0cce61b8-e008-11e9-b8bd-0e747d468076", flair_text="NHL", resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
     print("Posted " + title)
     # wait 11 minutes to post next thread
     print("Wating 11 minutes before next post....")
