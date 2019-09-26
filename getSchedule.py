@@ -29,7 +29,7 @@ datesDict = ast.literal_eval(datesString)
 games = datesDict["games"]
 
 # connect to reddit
-sub = "ShotGlassBets_Testing"
+sub = "ShotGlassBets"
 r = praw.Reddit('bot1')
 subreddit = r.subreddit(sub)
 
