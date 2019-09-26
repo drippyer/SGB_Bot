@@ -49,15 +49,14 @@ for game in games:
     rawGameDate = datetime.strptime(game["gameDate"], "%Y-%m-%dT%H:%M:%SZ")
     cleanGameDate = rawGameDate.replace(tzinfo=timezone('UTC'))
     easternGameDate = cleanGameDate.astimezone(timezone('US/Eastern'))
-    time = easternGameDate.strftime(timeFormat)
+    cleanTime = easternGameDate.strftime(timeFormat)
     teamDict = game["teams"]
     awayTeam = teamDict["away"]["team"]["name"]
     homeTeam = teamDict["home"]["team"]["name"]
-    title = "[" + simpleDay + "] " + homeTeam + " vs " + awayTeam + " (" + time + ")"
-    # f.write(title)
+    title = "[" + simpleDay + "] " + homeTeam + " vs " + awayTeam + " (" + cleanTime + ")"
     # submit post to reddit
-    subreddit.submit(title, selftext="", url=None, flair_id=None, flair_text=None, resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
+    subreddit.submit(title, selftext="", url=None, flair_id=0cce61b8-e008-11e9-b8bd-0e747d468076, flair_text="NHL", resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
     print("Posted " + title)
     # wait 11 minutes to post next thread
-    #print("Wating 11 minutes before next post....")
-    #time.sleep(60*11)
+    print("Wating 11 minutes before next post....")
+    time.sleep(60*11)
