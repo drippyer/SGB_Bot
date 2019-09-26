@@ -59,5 +59,5 @@ for game in games:
     subreddit.submit(title, selftext="", url=None, flair_id=None, flair_text=None, resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
     print("Posted " + title)
     # wait 11 minutes to post next thread
-    print("Wating 11 minutes before next post....")
-    time.sleep(60*11)
+    #print("Wating 11 minutes before next post....")
+    #time.sleep(60*11)
