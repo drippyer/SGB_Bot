@@ -14,9 +14,7 @@ longDay = str(today)
 simpleDay = str(today.strftime("%-m/%d"))
 dateFormat = "%Y-%m-%d %H:%M:%S %Z%z"
 timeFormat = "%-I:%M %p %Z"
-
 cwd = os.getcwd()
-folderDir = cwd + "/games"
 
 # create today's URL for API call
 baseURL = "https://statsapi.web.nhl.com/api/v1"
@@ -31,8 +29,9 @@ datesDict = ast.literal_eval(datesString)
 games = datesDict["games"]
 
 # connect to reddit
+sub = "ShotGlassBets_Testing"
 r = praw.Reddit('bot1')
-subreddit = r.subreddit("ShotGlassBets_Testing")
+subreddit = r.subreddit(sub)
 
 # check each game to create a title and post to reddit
 for game in games:
@@ -46,4 +45,4 @@ for game in games:
     title = "[" + simpleDay + "] " + homeTeam + " vs " + awayTeam + " (" + cleanTime + ")"
     # submit post to reddit
     subreddit.submit(title, selftext="", url=None, flair_id=None, flair_text=None, resubmit=True, send_replies=False, nsfw=False, spoiler=False, collection_id=None)
-    print("Posted " + title)
+    print("Posted \"" + title + "\" to /r/" + sub)
