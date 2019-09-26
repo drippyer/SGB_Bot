@@ -17,16 +17,16 @@ timeFormat = "%-I:%M %p %Z"
 # create folder to manage schedule files
 cwd = os.getcwd()
 folderDir = cwd + "/games"
-try:
-    os.makedirs(folderDir)
-except FileExistsError:
+#try:
+#    os.makedirs(folderDir)
+#except FileExistsError:
     # directory already exists
-    pass
+#    pass
 
 # clear file if it exists then make text file that will contain game info
-filename = folderDir + "/schedule_" + longDay + ".txt"
-open(filename, 'w').close()
-f = open(filename, "a+")
+#filename = folderDir + "/schedule_" + longDay + ".txt"
+#open(filename, 'w').close()
+#f = open(filename, "a+")
 
 # create today's URL for API call
 baseURL = "https://statsapi.web.nhl.com/api/v1"
